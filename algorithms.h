@@ -217,6 +217,9 @@ void bubbleSort(int arr[], int n)
       }
 }
 //Selection Sort
+/*
+Selection sort is an O(n2) sorting algorithm, simple in its programming and it can over perform other sorts in certain situations.
+*/
 void selectionSort(int arr[], int n) 
 {
 	int i, j, minIndex, tmp;    
@@ -237,6 +240,10 @@ void selectionSort(int arr[], int n)
 	}
 }
 // Insertion Sort
+/*
+Insertion sort is an O(n2) sorting algorithms. A sorting algorithm with quadratic complexity, 
+it is applied in practice for sorting small arrays of data and to improve quicksort routine.
+*/
 void insertionSort(int arr[], int length) 
 {
 	int i, j, tmp;
@@ -255,6 +262,9 @@ void insertionSort(int arr[], int length)
 	}
 }
 // Quick Sort
+/*
+Quicksort is a fast sorting algorithm, it has O(n log n) complexity, suitable for sorting big data volumes. 
+*/
 void quickSort(int arr[], int left, int right) 
 {
 	int i = left, j = right;
