@@ -94,6 +94,25 @@ void insert_node(PTR *pt,int x)
       insert_node(&(t->right),x);
    *pt=t;
 };
+// find node
+void find_node(PTR t,int n,int i)
+{
+  i++;
+  if(t==NULL)
+    {
+      printf("Not Found\n");
+      printf("Repeats: %i",i);
+    }
+  else if(n==t->data)
+    {
+      printf("Found\n");
+      printf("Repeats: %i",i);
+    }
+  else if(n<t->data)
+      find_node(t->left,n,i);
+  else
+      find_node(t->right,n,i);
+}
 // ptr create list 
 Ptr createList(Ptr p,int a[],char b[][10],int c[])
 {
@@ -110,3 +129,68 @@ Ptr createList(Ptr p,int a[],char b[][10],int c[])
   }
   return p;
 } 
+// enqueue
+void enqueue(int n,PTR *pf,PTR *pr)
+{
+  PTR newnode;
+  newnode = malloc(sizeof(struct node));
+  newnode->data=n;
+  newnode->next=NULL;
+if ((*pf)==NULL)
+  {
+    *pf=newnode;
+    *pr=newnode;
+  }
+else
+  {
+    (*pr)->next=newnode;
+    *pr=newnode;
+  }
+}
+//dequeue
+void dequeue(PTR *pf, PTR *pr)
+{
+  PTR p;
+if ((*pf)==NULL)
+     printf("\nQueue empty. No elements to delete.\n");
+else
+  {
+      p=*pf;
+     *pf=(*pf)->next;
+  if ((*pf)==NULL)
+     *pr=*pf;
+      printf("\n%d has been deleted...\n",p->data);
+      free(p);
+  }
+getch();
+}
+
+void preorder_traversal(PTR t)
+{
+  if (t!=NULL)
+   {
+     printf("%i ",t->data);
+     preorder_traversal(t->left);
+     preorder_traversal(t->right);
+   }
+}
+
+void inorder_traversal(PTR t)
+{
+  if (t!=NULL)
+   {
+    inorder_traversal(t->left);
+    printf("%i ",t->data);
+    inorder_traversal(t->right);
+   }
+}
+
+void postorder_traversal(PTR t)
+{
+  if (t!=NULL)
+    {
+      postorder_traversal(t->left);
+      postorder_traversal(t->right);
+      printf("%i ",t->data);
+    }
+}
