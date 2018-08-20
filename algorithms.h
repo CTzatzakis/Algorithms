@@ -138,8 +138,8 @@ void enqueue(int n,PTR *pf,PTR *pr)
   newnode->next=NULL;
 if ((*pf)==NULL)
   {
-    *pf=newnode;
-    *pr=newnode;
+	*pf=newnode;
+	*pr=newnode;
   }
 else
   {
@@ -193,4 +193,93 @@ void postorder_traversal(PTR t)
       postorder_traversal(t->right);
       printf("%i ",t->data);
     }
+}
+// bubblie sort
+void bubbleSort(int arr[], int n) 
+{
+      bool swapped = true;
+      int j = 0;
+      int tmp;
+      while (swapped) 
+      {
+            swapped = false;
+            j++;
+            for (int i = 0; i < n - j; i++) 
+	    {
+		    if (arr[i] > arr[i + 1]) 
+		    {
+			tmp = arr[i];
+			arr[i] = arr[i + 1];
+			arr[i + 1] = tmp;
+			swapped = true;
+                  }
+            }
+      }
+}
+//Selection Sort
+void selectionSort(int arr[], int n) 
+{
+	int i, j, minIndex, tmp;    
+	
+	for (i = 0; i < n - 1; i++) 
+	{
+		minIndex = i;
+		for (j = i + 1; j < n; j++)
+			if (arr[j] < arr[minIndex])
+				minIndex = j;
+
+            if (minIndex != i) 
+			{
+                tmp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = tmp;
+            }
+	}
+}
+// Insertion Sort
+void insertionSort(int arr[], int length) 
+{
+	int i, j, tmp;
+	
+	for (i = 1; i < length; i++) 
+	{
+		j = i;
+		while (j > 0 && arr[j - 1] > arr[j]) 
+		{
+			tmp = arr[j];
+			arr[j] = arr[j - 1];
+			arr[j - 1] = tmp;
+			j--;
+
+		}
+	}
+}
+// Quick Sort
+void quickSort(int arr[], int left, int right) 
+{
+	int i = left, j = right;
+	int tmp;
+	int pivot = arr[(left + right) / 2];
+      /* partition */
+	while (i <= j) 
+	{
+		while (arr[i] < pivot)
+			i++;
+		while (arr[j] > pivot)
+			j--;
+        if (i <= j) 
+		{
+			tmp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = tmp;
+			i++;
+			j--;
+		}
+
+	};
+      /* recursion */
+	if (left < j)
+		quickSort(arr, left, j);
+	if (i < right)
+		quickSort(arr, i, right);
 }
